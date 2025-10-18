@@ -1,0 +1,133 @@
+# 应用配置
+spring:
+  application:
+    name: back_service
+
+  # 数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/ai_platform?useUnicode=true&characterEncoding=utf8&useSSL=false&serverTimezone=Asia/Shanghai&allowPublicKeyRetrieval=true
+    username: root
+    password: root
+
+  # Redis配置
+  data:
+    redis:
+      host: localhost
+      port: 6379
+      password: ""
+      database: 0
+      timeout: "5000ms"
+      lettuce:
+        pool:
+          max-active: 20
+          max-idle: 8
+          min-idle: 0
+          max-wait: "-1ms"
+
+  # 文件上传配置
+  servlet:
+    multipart:
+      max-file-size: "100MB"
+      max-request-size: "100MB"
+
+  # 静态资源配置
+  web:
+    resources:
+      add-mappings: false
+  mvc:
+    favicon:
+      enabled: false
+
+server:
+  port: 8080
+
+# MyBatis配置
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+  type-aliases-package: com.kmu.edu.back_service.entity
+  configuration:
+    map-underscore-to-camel-case: true
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+
+# Sa-Token配置
+sa-token:
+  token-name: Authorization
+  token-prefix: Bearer
+  timeout: 86400
+  active-timeout: -1
+  is-concurrent: true
+  is-share: true
+  token-style: uuid
+  is-log: false
+
+# AI服务配置 - 硅基流动
+# 聊天模型配置
+ai:
+  silicon:
+    api-key: sk-vfeoiswrmmipohirzlzdvewrwejaaqhgdcuofwrtyyydxdne
+    base-url: https://api.siliconflow.cn/v1
+    chat-model: Qwen/Qwen3-30B-A3B-Instruct-2507
+    image-model: Qwen/Qwen-Image
+    video-model: Wan-AI/Wan2.2-I2V-A14B
+    timeout: "60s"
+    max-tokens: 2048
+    temperature: 0.7
+    video-timeout-seconds: 600
+    video-poll-interval-millis: 3000
+    video-t2v-model: Wan-AI/Wan2.2-T2V-A14B
+    video-i2v-model: Wan-AI/Wan2.2-I2V-A14B
+    video-image-size: 1280x720
+
+file:
+  upload:
+    path: /data/uploads/
+    url-prefix: http://localhost:8080/files/
+
+# MinIO 配置（请根据实际部署修改）
+storage:
+  minio:
+    endpoint: http://localhost:9000
+    access-key: admin
+    secret-key: admin123456
+    bucket: test
+    public-base-url: http://localhost:9000/test
+
+# SpringDoc & Knife4j配置
+springdoc:
+  api-docs:
+    enabled: true
+    path: /v3/api-docs
+  swagger-ui:
+    enabled: true
+    path: /swagger-ui.html
+    disable-swagger-default-url: true
+  packages-to-scan: com.kmu.edu.back_service.controller
+  paths-to-match: /api/**
+  show-actuator: false
+
+# Knife4j增强配置
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
+  production: false
+
+# 日志配置
+logging:
+  level:
+    com.kmu.edu.back_service: DEBUG
+    org.mybatis: DEBUG
+  pattern:
+    console: "%d{yyyy-MM-dd HH:mm:ss} [%thread] %-5level %logger{50} - %msg%n"
+
+# 业务配置
+user:
+  default:
+    avatar: http://localhost:8080/files/avatar/default.png
+  free:
+    daily-limit: 10
+  vip:
+    daily-limit: 100
+  super-vip:
+    daily-limit: 500
