@@ -1,6 +1,8 @@
-## AIOC 后端服务（Spring Boot）
+## AIOC 后端服务
 
-一个以 Spring Boot 为核心的 AI 综合平台后端，提供认证、聊天、图片/视频生成、PPT 生成等 API，并内置 Swagger/Knife4j 在线文档。
+本项目是一个基于Spring Boot 3 + Vue3的AI综合服务平台，集成了AI聊天、图片生成、视频生成和AI PPT制作以及会员充值等功能。
+* 后端源码：[https://github.com/WangJunqing-coder/AIOC](https://github.com/WangJunqing-coder/AIOC)
+* 前端源码：[https://github.com/WangJunqing-coder/AIOC](https://github.com/WangJunqing-coder/AIOC)
 
 ## 技术栈与特性
 
