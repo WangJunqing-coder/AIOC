@@ -2,9 +2,10 @@
 
 ## AIOC 后端服务
 
-本项目是一个基于Spring Boot 3 + Vue3的AI综合服务平台，集成了AI聊天、图片生成、视频生成和AI PPT制作以及会员充值等功能。
-* 后端源码：[https://github.com/WangJunqing-coder/AIOC](https://github.com/WangJunqing-coder/AIOC)
-* 前端源码：[https://github.com/WangJunqing-coder/AIOC](https://github.com/WangJunqing-coder/AIOC)
+本项目是一个基于 Spring Boot 3 + Vue 3 的 AI 综合服务平台，集成了 AI 聊天、图片生成、视频生成、AI PPT 制作以及会员充值等功能。
+
+- 后端源码：https://github.com/WangJunqing-coder/AIOC
+- 前端源码：https://github.com/WangJunqing-coder/AIOC
 
 ## 技术栈与特性
 
@@ -87,8 +88,6 @@ mvn -q -DskipTests spring-boot:run
 mvn -q -DskipTests package
 java -jar target\back_service-0.0.1-SNAPSHOT.jar
 ```
-
-
 
 ## 重要配置说明（摘自 `application.yml`）
 
