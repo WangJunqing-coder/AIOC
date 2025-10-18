@@ -2,9 +2,13 @@ package com.kmu.edu.back_service.service;
 
 import com.kmu.edu.back_service.config.MinioConfig;
 import io.minio.BucketExistsArgs;
+import io.minio.GetObjectArgs;
+import io.minio.GetObjectResponse;
 import io.minio.MakeBucketArgs;
 import io.minio.MinioClient;
 import io.minio.PutObjectArgs;
+import io.minio.StatObjectArgs;
+import io.minio.StatObjectResponse;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
@@ -65,5 +69,33 @@ public class MinioStorageService {
         }
         // 回退为直连MinIO路径（需要MinIO允许公共读或签名访问）
         return minioConfig.getEndpoint().replaceAll("/+$", "") + "/" + minioConfig.getBucket() + "/" + objectName;
+    }
+
+    public StatObjectResponse statObject(String objectName) {
+        try {
+            return minioClient.statObject(StatObjectArgs.builder()
+                    .bucket(minioConfig.getBucket())
+                    .object(objectName)
+                    .build());
+        } catch (Exception e) {
+            log.error("获取对象元信息失败: {}", objectName, e);
+            throw new RuntimeException("获取对象信息失败", e);
+        }
+    }
+
+    public GetObjectResponse getObject(String objectName, long offset, Long length) {
+        try {
+            GetObjectArgs.Builder builder = GetObjectArgs.builder()
+                    .bucket(minioConfig.getBucket())
+                    .object(objectName)
+                    .offset(offset);
+            if (length != null) {
+                builder.length(length);
+            }
+            return minioClient.getObject(builder.build());
+        } catch (Exception e) {
+            log.error("获取对象流失败: {}", objectName, e);
+            throw new RuntimeException("读取对象失败", e);
+        }
     }
 }
