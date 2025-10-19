@@ -4,7 +4,7 @@
 
 本项目是一个基于Spring Boot 3 + Vue3的AI综合服务平台，集成了AI聊天、图片生成、视频生成和AI PPT制作以及会员充值等功能。
 * 后端源码：[https://github.com/WangJunqing-coder/AIOC](https://github.com/WangJunqing-coder/AIOC)
-* 前端源码：[https://github.com/WangJunqing-coder/AIOC](https://github.com/WangJunqing-coder/AIOC)
+* 前端源码：[https://github.com/WangJunqing-coder/AIOC-front](https://github.com/WangJunqing-coder/AIOC-front)
 
 ## 技术栈与特性
 

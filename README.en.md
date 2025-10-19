@@ -5,7 +5,7 @@ Language: [中文](README.zh-CN.md) | [English](README.en.md)
 This is an AI platform based on Spring Boot 3 and Vue 3, integrating AI Chat, Image Generation, Video Generation, AI PPT creation, and membership top-up features.
 
 - Backend repo: https://github.com/WangJunqing-coder/AIOC
-- Frontend repo: https://github.com/WangJunqing-coder/AIOC
+- Frontend repo: https://github.com/WangJunqing-coder/AIOC-front
 
 ## Tech Stack & Features
 
